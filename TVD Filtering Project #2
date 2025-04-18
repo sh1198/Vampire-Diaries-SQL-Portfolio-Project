@@ -1,0 +1,52 @@
+-- 📁 Vampire Diaries SQL Portfolio Project #2
+-- Topic: Vampires Table – Working with LENGTH, WHERE, LIKE, and String Functions
+
+-- Table: Vampires
+-- Columns: name (TEXT), coven (TEXT)
+
+-- 1. Get the name and coven of all vampires along with the length of their full identity
+-- (name + coven combined)
+SELECT name, coven, LENGTH(name) + LENGTH (coven) AS total_identity_length
+FROM Vampires
+ORDER BY total_identity_length DESC;
+
+-- 2. Get vampires where the combined length of name and coven is greater than 15
+SELECT name, coven, LENGTH(name) + LENGTH (coven) AS total_identity_length
+FROM Vampires
+WHERE LENGTH(name) + LENGTH (coven) > 15
+ORDER BY total_identity_length DESC;
+
+-- 3. Find all vampire names that end with 'K'
+SELECT name 
+FROM Vampires 
+WHERE name LIKE '%K';
+
+-- 4. Find all vampire names that end with 'e'
+SELECT name 
+FROM Vampires 
+WHERE name LIKE '%e';
+
+-- 5. Find vampire names that contain the letters 'ar'
+SELECT name 
+FROM Vampires 
+WHERE name LIKE '%ar%';
+
+-- 6. Find all species values from a Characters table that contain 'mp'
+SELECT species 
+FROM Characters 
+WHERE species LIKE '%mp%';
+
+-- 7. List characters where name length is exactly 7 letters
+SELECT name, LENGTH(name) AS name_length 
+FROM Characters 
+WHERE LENGTH(name) = 7;
+
+--Can also use the following query:
+SELECT name
+FROM Characters 
+WHERE name LIKE '_______';
+
+-- 8. Bonus: Find all names containing "a" somewhere in the middle, but not at the beginning
+SELECT name 
+FROM Characters 
+WHERE name LIKE '_%a%';
